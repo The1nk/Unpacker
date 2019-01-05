@@ -33,8 +33,8 @@ namespace Unpacker
                 p.StartInfo.Arguments = $"e -aoa \"{Filename}\"";
             } else if (Filename.Contains(".rar", StringComparison.CurrentCultureIgnoreCase))
             {
-                p.StartInfo.FileName = "rar";
-                p.StartInfo.Arguments = $"e -o+ \"{Filename}\"";
+                p.StartInfo.FileName = "7z";
+                p.StartInfo.Arguments = $"e -aoa \"{Filename}\"";
             } else if (Filename.Contains(".zip", StringComparison.CurrentCultureIgnoreCase))
             {
                 p.StartInfo.FileName = "7z";
@@ -46,6 +46,7 @@ namespace Unpacker
 
             if (p.ExitCode != 0)
                 throw new Exception($"File '{Filename}' failed to unpack - Exit code {p.ExitCode} returned");
+            
         }
     }
 }
